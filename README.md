@@ -1,6 +1,6 @@
 Dragon Bot Essentials
 =====================
-Dragon Bot Essentials is a plugin for the [Dragon Bot](https://github.com/Dragovorn/dragon-bot-twitch "Dragon Bot's Github") that implements basic commands
+Dragon Bot Essentials is a plugin for the [Dragon Bot](https://github.com/Dragovorn/dragon-bot-twitch "Dragon Bot's Github") that implements basic commands.
 
 Chat Commands
 -------------

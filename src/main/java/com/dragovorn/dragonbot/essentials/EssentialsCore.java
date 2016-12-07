@@ -21,7 +21,7 @@ public class EssentialsCore extends BotPlugin {
 
     public static final String PREFIX = "[Essentials]: "; // Use this until plugin specific loggers are a thing
 
-    private ArrayList<String> quotes;
+    private List<String> quotes;
 
     private Configuration quotesConfig;
 
@@ -53,22 +53,16 @@ public class EssentialsCore extends BotPlugin {
 
         this.quotes = new ArrayList<>();
         this.configuration = new EssentialsConfiguration(registerFile("config.yml"));
-        this.quotesConfig = new Configuration(registerFile("quotes.yml"));
+        this.quotesConfig = new Configuration(registerFile("quotes.yml")) {
+            @Override
+            protected void addDefaults() {
+                add("quotes", new ArrayList<String>());
+            }
+        };
 
-        if (this.quotesConfig.getEntries().get("quotes") != null && this.quotesConfig.getList("quotes").size() == 0) {
-            this.quotesConfig.set("quotes", this.quotes);
-            this.quotesConfig.save();
-        } else {
-            this.quotesConfig.load();
-            this.quotes = (ArrayList<String>) this.quotesConfig.getEntries().get("quotes");
-        }
-
-        if (this.configuration.getString("discord") == null) {
-            this.configuration.generate();
-        } else {
-            this.configuration.load();
-            this.configuration.update();
-        }
+        this.quotesConfig.load();
+        this.configuration.load();
+        this.quotes = this.quotesConfig.getList("quotes");
     }
 
     @Override

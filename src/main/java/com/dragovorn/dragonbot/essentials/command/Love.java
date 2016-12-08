@@ -31,7 +31,7 @@ public class Love extends Command {
         for (int x = 0; x < user.getName().length(); x++) {
             for (int y = 0; y < name.length(); y++) {
                 if (user.getName().charAt(x) == name.charAt(y)) {
-                    name = name.replace(String.valueOf(name.charAt(y)), "");
+                    name = name.replaceAll(String.valueOf(name.charAt(y)), "");
                 }
             }
         }

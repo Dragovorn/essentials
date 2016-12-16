@@ -51,7 +51,6 @@ public class EssentialsCore extends BotPlugin {
     public void onLoad() {
         instance = this;
 
-        this.quotes = new ArrayList<>();
         this.configuration = new EssentialsConfiguration(registerFile("config.yml"));
         this.quotesConfig = new Configuration(registerFile("quotes.yml")) {
             @Override

@@ -7,6 +7,7 @@ import com.dragovorn.dragonbot.bot.Bot;
 import com.dragovorn.dragonbot.essentials.command.Discord;
 import com.dragovorn.dragonbot.essentials.command.Love;
 import com.dragovorn.dragonbot.essentials.command.Quote;
+import com.dragovorn.dragonbot.essentials.command.Uptime;
 import com.dragovorn.dragonbot.essentials.command.console.ConsoleQuote;
 import com.dragovorn.dragonbot.essentials.gui.EssentialsPanel;
 import com.dragovorn.dragonbot.essentials.listener.gui.EssentialsListener;
@@ -71,6 +72,7 @@ public class EssentialsCore extends BotPlugin {
         Bot.getInstance().getCommandManager().registerCommand(new Quote());
         Bot.getInstance().getCommandManager().registerCommand(new Discord());
         Bot.getInstance().getCommandManager().registerCommand(new Love());
+        Bot.getInstance().getCommandManager().registerCommand(new Uptime());
         Bot.getInstance().getCommandManager().registerConsoleCommand(new ConsoleQuote());
 
         JButton button = new JButton("Essentials");

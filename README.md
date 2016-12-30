@@ -10,6 +10,7 @@ Chat Commands
 - !quote \<num\> - Sends the quote bound to that id  
 - !quote - Sends a random quote from the list  
 - !discord - Sends the streamer configured discord link
+- !uptime - Sends the uptime of the stream (using the built in Dragon Bot Twitch API)
 
 Console Commands
 ----------------

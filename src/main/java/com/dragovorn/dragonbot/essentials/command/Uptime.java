@@ -24,7 +24,7 @@ public class Uptime extends Command {
             try {
                 stream = (JSONObject) DragonBot.getInstance().getTwitchAPI().getStream(Bot.getInstance().getChannel()).get("stream");
             } catch (ClassCastException exception) {
-                Bot.getInstance().sendMessage("%s isn\'t live!", Bot.getInstance().getChannel());
+                DragonBot.getInstance().sendMessage("%s isn\'t live!", Bot.getInstance().getChannel());
                 return;
             }
 
@@ -65,9 +65,9 @@ public class Uptime extends Command {
             }
 
 
-            Bot.getInstance().sendMessage("%s has been live for %s!", Bot.getInstance().getChannel(), builder.toString().trim());
+            DragonBot.getInstance().sendMessage("%s has been live for %s!", Bot.getInstance().getChannel(), builder.toString().trim());
         } catch (Exception exception) {
-            Bot.getInstance().sendMessage("I couldn't connect to the twitch api!");
+            DragonBot.getInstance().sendMessage("I couldn't connect to the twitch api!");
         }
     }
 }

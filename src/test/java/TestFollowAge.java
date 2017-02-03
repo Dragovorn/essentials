@@ -23,7 +23,7 @@ public class TestFollowAge {
 
             System.out.println("Polling...");
 
-            Date date = poll("Dragovorn", "");
+            Date date = poll("MidnightCrest", "");
 
             System.out.println("Polled...");
 
@@ -36,41 +36,46 @@ public class TestFollowAge {
 
             long difference = System.currentTimeMillis() - date.getTime();
 
-            int days = (int) difference / 86400000;
-            int remainder = (int) difference % 86400000;
-            int hours = remainder / 3600000;
-            remainder = remainder % 3600000;
-            int minutes = remainder / 60000;
-            remainder = remainder % 60000;
-            int seconds = remainder / 1000;
+            long months = difference / (long) (2.628 * Math.pow(10, 9));
+            long remainder = difference % (long) (2.628 * Math.pow(10, 9));
+            long days = remainder / (long) (8.64 * Math.pow(10, 7));
+            remainder = remainder % (long) (2.628 * Math.pow(10, 9));
 
-            StringBuilder builder = new StringBuilder();
-
-            System.out.println("Decoded...");
-
-            System.out.println(days + " " + hours + " " + minutes + " " + seconds);
-
-            if (days > 0) {
-                builder.append(days).append(" day").append((days > 1 ? "s, " : ", "));
-            }
-
-            if (hours > 0) {
-                builder.append(hours).append(" hour").append((hours > 1 ? "s, " : ", "));
-            }
-
-            if (minutes > 0) {
-                builder.append(minutes).append(" minute").append((minutes > 1 ? "s, " : ", "));
-            }
-
-            if (seconds > 0) {
-                if (builder.length() > 0) {
-                    builder.append("and ");
-                }
-
-                builder.append(seconds).append(" second").append((seconds > 1 ? "s" : ""));
-            }
-
-            System.out.println(builder.toString().trim());
+            System.out.println("M: " + months + ", D: " + days);
+//            int remainder = (int) difference % 86400000;
+//            int hours = remainder / 3600000;
+//            remainder = remainder % 3600000;
+//            int minutes = remainder / 60000;
+//            remainder = remainder % 60000;
+//            int seconds = remainder / 1000;
+//
+//            StringBuilder builder = new StringBuilder();
+//
+//            System.out.println("Decoded...");
+//
+//            System.out.println(days + " " + hours + " " + minutes + " " + seconds);
+//
+//            if (days > 0) {
+//                builder.append(days).append(" day").append((days > 1 ? "s, " : ", "));
+//            }
+//
+//            if (hours > 0) {
+//                builder.append(hours).append(" hour").append((hours > 1 ? "s, " : ", "));
+//            }
+//
+//            if (minutes > 0) {
+//                builder.append(minutes).append(" minute").append((minutes > 1 ? "s, " : ", "));
+//            }
+//
+//            if (seconds > 0) {
+//                if (builder.length() > 0) {
+//                    builder.append("and ");
+//                }
+//
+//                builder.append(seconds).append(" second").append((seconds > 1 ? "s" : ""));
+//            }
+//
+//            System.out.println(builder.toString().trim());
         } catch (IOException exception) {
             exception.printStackTrace();
             fail();

@@ -19,63 +19,61 @@ public class TestFollowAge {
     @Test
     public void test() {
         try {
-            System.out.println("Starting...");
-
-            System.out.println("Polling...");
-
-            Date date = poll("MidnightCrest", "");
-
-            System.out.println("Polled...");
+            Date date = poll("bob is great ", "");
 
             if (date == null) {
                 System.out.println("Not following");
                 return;
             }
 
-            System.out.println("Decoding...");
-
             long difference = System.currentTimeMillis() - date.getTime();
 
-            long months = difference / (long) (2.628 * Math.pow(10, 9));
-            long remainder = difference % (long) (2.628 * Math.pow(10, 9));
-            long days = remainder / (long) (8.64 * Math.pow(10, 7));
-            remainder = remainder % (long) (2.628 * Math.pow(10, 9));
+            int years = (int) (difference / (long) (3.154 * Math.pow(10, 10)));
+            long remainder = difference % (long) (3.154 * Math.pow(10, 10));
+            int months = (int) (remainder / (long) (2.628 * Math.pow(10, 9)));
+            remainder = difference % (long) (2.628 * Math.pow(10, 9));
+            int days = (int) (remainder / (long) (8.64 * Math.pow(10, 7)));
+            remainder = remainder % (long) (8.64 * Math.pow(10, 7));
+            int hours = (int) (remainder / (long) (3.6 * Math.pow(10, 6)));
+            remainder = remainder % (long) (3.6 * Math.pow(10, 6));
+            int minutes = (int) (remainder / (long) (6 * Math.pow(10, 4)));
+            remainder = remainder % (long) (6 * Math.pow(10, 4));
+            int seconds = (int) (remainder / (long) (1 * Math.pow(10, 3)));
 
-            System.out.println("M: " + months + ", D: " + days);
-//            int remainder = (int) difference % 86400000;
-//            int hours = remainder / 3600000;
-//            remainder = remainder % 3600000;
-//            int minutes = remainder / 60000;
-//            remainder = remainder % 60000;
-//            int seconds = remainder / 1000;
-//
-//            StringBuilder builder = new StringBuilder();
-//
-//            System.out.println("Decoded...");
-//
-//            System.out.println(days + " " + hours + " " + minutes + " " + seconds);
-//
-//            if (days > 0) {
-//                builder.append(days).append(" day").append((days > 1 ? "s, " : ", "));
-//            }
-//
-//            if (hours > 0) {
-//                builder.append(hours).append(" hour").append((hours > 1 ? "s, " : ", "));
-//            }
-//
-//            if (minutes > 0) {
-//                builder.append(minutes).append(" minute").append((minutes > 1 ? "s, " : ", "));
-//            }
-//
-//            if (seconds > 0) {
-//                if (builder.length() > 0) {
-//                    builder.append("and ");
-//                }
-//
-//                builder.append(seconds).append(" second").append((seconds > 1 ? "s" : ""));
-//            }
-//
-//            System.out.println(builder.toString().trim());
+
+            StringBuilder builder = new StringBuilder();
+
+            if (years > 0) {
+                builder.append(years).append(" year").append((years > 1 ? "s, " : ", "));
+            }
+
+            if (months > 0) {
+                builder.append(months).append(" month").append((months > 1 ? "s, " : ", "));
+            }
+
+            if (days > 0) {
+                builder.append(days).append(" day").append((days > 1 ? "s, " : ", "));
+            }
+
+            if (hours > 0) {
+                builder.append(hours).append(" hour").append((hours > 1 ? "s, " : ", "));
+            }
+
+            if (minutes > 0) {
+                builder.append(minutes).append(" minute").append((minutes > 1 ? "s, " : ", "));
+            }
+
+            if (seconds > 0) {
+                if (builder.length() > 0) {
+                    builder.append("and ");
+                }
+
+                builder.append(seconds).append(" second").append((seconds > 1 ? "s" : ""));
+            } else {
+                builder.replace(builder.length() - 2, builder.length(), "");
+            }
+
+            System.out.println(builder.toString().trim());
         } catch (IOException exception) {
             exception.printStackTrace();
             fail();

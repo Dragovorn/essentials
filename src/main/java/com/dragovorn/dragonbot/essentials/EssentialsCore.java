@@ -3,11 +3,8 @@ package com.dragovorn.dragonbot.essentials;
 import com.dragovorn.dragonbot.api.bot.configuration.Configuration;
 import com.dragovorn.dragonbot.api.bot.plugin.BotPlugin;
 import com.dragovorn.dragonbot.api.bot.plugin.Plugin;
-import com.dragovorn.dragonbot.bot.Bot;
-import com.dragovorn.dragonbot.essentials.command.Discord;
-import com.dragovorn.dragonbot.essentials.command.Love;
-import com.dragovorn.dragonbot.essentials.command.Quote;
-import com.dragovorn.dragonbot.essentials.command.Uptime;
+import com.dragovorn.dragonbot.bot.DragonBot;
+import com.dragovorn.dragonbot.essentials.command.*;
 import com.dragovorn.dragonbot.essentials.command.console.ConsoleQuote;
 import com.dragovorn.dragonbot.essentials.gui.EssentialsPanel;
 import com.dragovorn.dragonbot.essentials.listener.gui.EssentialsListener;
@@ -17,7 +14,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Plugin(name = "Essentials", author = "Dragovorn")
+@Plugin(name = "Essentials", author = "Dragovorn", version= "1.01a")
 public class EssentialsCore extends BotPlugin {
 
     public static final String PREFIX = "[Essentials]: "; // Use this until plugin specific loggers are a thing
@@ -69,11 +66,13 @@ public class EssentialsCore extends BotPlugin {
     public void onEnable() {
         this.panel = new EssentialsPanel();
 
-        Bot.getInstance().getCommandManager().registerCommand(new Quote());
-        Bot.getInstance().getCommandManager().registerCommand(new Discord());
-        Bot.getInstance().getCommandManager().registerCommand(new Love());
-        Bot.getInstance().getCommandManager().registerCommand(new Uptime());
-        Bot.getInstance().getCommandManager().registerConsoleCommand(new ConsoleQuote());
+        DragonBot.getInstance().getCommandManager().registerCommand(new Quote());
+        DragonBot.getInstance().getCommandManager().registerCommand(new Discord());
+        DragonBot.getInstance().getCommandManager().registerCommand(new Love());
+        DragonBot.getInstance().getCommandManager().registerCommand(new Uptime());
+        DragonBot.getInstance().getCommandManager().registerCommand(new FollowAge());
+
+        DragonBot.getInstance().getCommandManager().registerConsoleCommand(new ConsoleQuote());
 
         JButton button = new JButton("Essentials");
         button.addActionListener(new EssentialsListener());

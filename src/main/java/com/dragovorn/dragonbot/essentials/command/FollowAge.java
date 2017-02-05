@@ -3,6 +3,7 @@ package com.dragovorn.dragonbot.essentials.command;
 import com.dragovorn.dragonbot.api.bot.command.Command;
 import com.dragovorn.dragonbot.bot.DragonBot;
 import com.dragovorn.dragonbot.bot.User;
+import com.dragovorn.dragonbot.essentials.utils.TimeUnit;
 import com.sun.istack.internal.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,25 +22,64 @@ public class FollowAge extends Command {
 
     @Override
     public void execute(@NotNull User user, @NotNull String[] strings) {
-
-        Date followAge;
-
         try {
-            followAge = getFollowAge(user.getName());
+            Date date = poll(user.getName(), "");
+
+            if (date == null) {
+                DragonBot.getInstance().sendMessage("%s -> You don\'t appear to be following %s...", user.getName(), DragonBot.getInstance().getChannel());
+                return;
+            }
+
+            long difference = System.currentTimeMillis() - date.getTime();
+
+            int years = TimeUnit.YEAR.convert(difference);
+            long remainder = TimeUnit.YEAR.remainder(difference);
+            int months = TimeUnit.MONTH.convert(remainder);
+            remainder = TimeUnit.MONTH.remainder(remainder);
+            int days = TimeUnit.DAY.convert(remainder);
+            remainder = TimeUnit.DAY.remainder(remainder);
+            int hours = TimeUnit.HOUR.convert(remainder);
+            remainder = TimeUnit.HOUR.remainder(remainder);
+            int minutes = TimeUnit.MINUTE.convert(remainder);
+            remainder = TimeUnit.MINUTE.remainder(remainder);
+            int seconds = TimeUnit.SECOND.convert(remainder);
+
+            StringBuilder builder = new StringBuilder();
+
+            if (years > 0) {
+                builder.append(years).append(" year").append((years > 1 ? "s, " : ", "));
+            }
+
+            if (months > 0) {
+                builder.append(months).append(" month").append((months > 1 ? "s, " : ", "));
+            }
+
+            if (days > 0) {
+                builder.append(days).append(" day").append((days > 1 ? "s, " : ", "));
+            }
+
+            if (hours > 0) {
+                builder.append(hours).append(" hour").append((hours > 1 ? "s, " : ", "));
+            }
+
+            if (minutes > 0) {
+                builder.append(minutes).append(" minute").append((minutes > 1 ? "s, " : ", "));
+            }
+
+            if (seconds > 0) {
+                if (builder.length() > 0) {
+                    builder.append("and ");
+                }
+
+                builder.append(seconds).append(" second").append((seconds > 1 ? "s" : ""));
+            } else {
+                builder.replace(builder.length() - 2, builder.length(), "");
+            }
+
+            DragonBot.getInstance().sendMessage("%s -> Your Follow Age is %s!", user.getName(), builder.toString().trim());
         } catch (IOException exception) {
             DragonBot.getInstance().sendMessage("Failed to connect to the Twitch API!");
-            return;
         }
-
-        if (followAge == null) {
-            DragonBot.getInstance().sendMessage("%s -> You don't appear to be following %s...", user.getName(), DragonBot.getInstance().getChannel());
-        }
-
-        DragonBot.getInstance().sendMessage("%s -> Your Follow Age is %s!", user.getName(), 1);
-    }
-
-    private Date getFollowAge(String name) throws IOException {
-        return poll(name, "");
     }
 
     private Date poll(String name, String cursor) throws IOException {
@@ -62,6 +102,7 @@ public class FollowAge extends Command {
                     return format.parse(array.getJSONObject(x).getString("created_at"));
                 } catch (ParseException exception) {
                     exception.printStackTrace();
+                    return null;
                 }
             }
         }

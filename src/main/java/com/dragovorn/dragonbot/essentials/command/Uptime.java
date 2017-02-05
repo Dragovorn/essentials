@@ -62,6 +62,8 @@ public class Uptime extends Command {
                 }
 
                 builder.append(seconds).append(" second").append((seconds > 1 ? "s" : ""));
+            } else {
+                builder.replace(builder.length() - 2, builder.length(), "");
             }
 
 

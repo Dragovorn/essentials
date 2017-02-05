@@ -12,7 +12,7 @@ Chat Commands
 - !discord - Sends the streamer configured discord link
 - !uptime - Sends the uptime of the stream (using the built in Dragon Bot Twitch API)
 - !\<points\> - Sends the user their points the command changes based on what you named your points. **(WIP)**
-- !followage - Sends the user their 'follow age' measured in years + months **(WIP)**
+- !followage - Sends the user their 'follow age' measured in years + months
 
 Console Commands
 ----------------

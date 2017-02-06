@@ -6,6 +6,12 @@ import com.dragovorn.dragonbot.bot.User;
 import com.dragovorn.dragonbot.essentials.EssentialsCore;
 import com.sun.istack.internal.NotNull;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * Sends the user configured discord link into the chat.
+ */
 public class Discord extends Command {
 
     public Discord() {

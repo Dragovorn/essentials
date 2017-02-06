@@ -4,12 +4,21 @@ import com.dragovorn.dragonbot.api.bot.command.Command;
 import com.dragovorn.dragonbot.bot.Bot;
 import com.dragovorn.dragonbot.bot.DragonBot;
 import com.dragovorn.dragonbot.bot.User;
+import com.dragovorn.dragonbot.essentials.utils.TimeUnit;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * This is the uptime command, it interfaces with the Twitch API to fetch the time the
+ * stream went live, it then calculates the difference between the dates and applies a
+ * short algorithm to split the difference into days hours minutes seconds.
+ */
 public class Uptime extends Command {
 
     public Uptime() {
@@ -34,13 +43,13 @@ public class Uptime extends Command {
 
             long difference = System.currentTimeMillis() - parse.getTime();
 
-            int days = (int) difference / 86400000;
-            int remainder = (int) difference % 86400000;
-            int hours = remainder / 3600000;
-            remainder = remainder % 3600000;
-            int minutes = remainder / 60000;
-            remainder = remainder % 60000;
-            int seconds = remainder / 1000;
+            int days = TimeUnit.DAY.convert(difference);
+            long remainder = TimeUnit.DAY.remainder(difference);
+            int hours = TimeUnit.HOUR.convert(remainder);
+            remainder = TimeUnit.HOUR.remainder(remainder);
+            int minutes = TimeUnit.MINUTE.convert(remainder);
+            remainder = TimeUnit.MINUTE.remainder(remainder);
+            int seconds = TimeUnit.SECOND.convert(remainder);
 
             StringBuilder builder = new StringBuilder();
 

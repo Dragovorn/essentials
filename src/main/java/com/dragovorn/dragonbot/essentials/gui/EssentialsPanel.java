@@ -8,6 +8,12 @@ import com.dragovorn.dragonbot.gui.TextPrompt;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * This is the main GUI for Essentials, allows users to change the settings of the plugin
+ */
 public class EssentialsPanel extends JPanel {
 
     private JTextField quote;
@@ -35,7 +41,7 @@ public class EssentialsPanel extends JPanel {
         this.quote = new JTextField(9);
         this.quote.setMaximumSize(this.quote.getPreferredSize());
         this.quote.addActionListener(new AddQuoteListener());
-        new TextPrompt("Quote", this.quote); // This never gets updated
+        new TextPrompt("Quote", this.quote);
 
         JButton add = new JButton("Add Quote");
         add.addActionListener(new AddQuoteListener());

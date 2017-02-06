@@ -6,6 +6,13 @@ import com.dragovorn.dragonbot.gui.MainWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * This is preformed when the Essentials button is pushed in the GUI
+ * it switches the bot's GUI to the essentials GUI
+ */
 public class EssentialsListener implements ActionListener {
 
     @Override

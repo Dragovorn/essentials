@@ -8,6 +8,13 @@ import com.sun.istack.internal.NotNull;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * This command allows users to modify/query the quote list. This
+ * command takes arguments.
+ */
 public class Quote extends Command {
 
     public Quote() {

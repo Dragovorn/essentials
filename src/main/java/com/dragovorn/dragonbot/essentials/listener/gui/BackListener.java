@@ -5,6 +5,12 @@ import com.dragovorn.dragonbot.gui.MainWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * Used to switch from the Essentials GUI back to the Dragon Bot's GUI.
+ */
 public class BackListener implements ActionListener {
 
     @Override

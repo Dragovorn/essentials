@@ -7,6 +7,12 @@ import com.sun.istack.internal.NotNull;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * Sends a random quote from the list into the console.
+ */
 public class ConsoleQuote extends ConsoleCommand {
 
     public ConsoleQuote() {

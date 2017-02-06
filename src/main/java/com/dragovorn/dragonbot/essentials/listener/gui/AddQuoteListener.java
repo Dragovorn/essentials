@@ -6,6 +6,12 @@ import com.dragovorn.dragonbot.essentials.EssentialsCore;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * Used to allow the user to add quotes to the list manually, instead of the moderators.
+ */
 public class AddQuoteListener implements ActionListener {
 
     @Override

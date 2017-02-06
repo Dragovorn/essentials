@@ -5,6 +5,15 @@ import com.dragovorn.dragonbot.bot.Bot;
 import com.dragovorn.dragonbot.bot.User;
 import com.sun.istack.internal.NotNull;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * This command takes in an argument which would represent the name of
+ * the other user/thing, we then apply a short 'love' algorithm that
+ * based on the characters of the name figures out the percent that the
+ * two love each-other.
+ */
 public class Love extends Command {
 
     public Love() {
@@ -28,6 +37,7 @@ public class Love extends Command {
 
         String entered = name;
 
+        /* Remove duplicate letters */
         for (int x = 0; x < user.getName().length(); x++) {
             for (int y = 0; y < name.length(); y++) {
                 if (user.getName().charAt(x) == name.charAt(y)) {
@@ -36,10 +46,12 @@ public class Love extends Command {
             }
         }
 
+        /* Add the second name to the first make them both upper case so capitalization doesn't matter */
         String names = user.getName().toUpperCase() + name.toUpperCase();
 
         int sum = 0;
 
+        /* Sum them together to get the final 'love score' */
         for (int x = 0; x < names.length(); x++) {
             sum += names.charAt(x);
         }

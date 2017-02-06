@@ -1,5 +1,11 @@
 package com.dragovorn.dragonbot.essentials.utils;
 
+/**
+ * @author Dragovorn
+ * @since 1.01a
+ *
+ * Allows for easier time conversion using the built in convert methods.
+ */
 public enum TimeUnit {
     YEAR((long) (3.154 * Math.pow(10, 10))),
     MONTH((long) (2.628 * Math.pow(10, 9))),

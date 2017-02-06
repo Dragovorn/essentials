@@ -14,6 +14,13 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * Main Essentials plugin class handles the initialization of the plugin
+ * look at this like the main method of your program.
+ */
 @Plugin(name = "Essentials", author = "Dragovorn", version= "1.01a")
 public class EssentialsCore extends BotPlugin {
 
@@ -49,6 +56,7 @@ public class EssentialsCore extends BotPlugin {
     public void onLoad() {
         instance = this;
 
+        /* Initialize our configuration right when our plugin loads */
         this.configuration = new EssentialsConfiguration(registerFile("config.yml"));
         this.quotesConfig = new Configuration(registerFile("quotes.yml")) {
             @Override
@@ -57,8 +65,11 @@ public class EssentialsCore extends BotPlugin {
             }
         };
 
+        /* Make sure to load the configurations */
         this.quotesConfig.load();
         this.configuration.load();
+
+        /* Populate our quotes list */
         this.quotes = this.quotesConfig.getList("quotes");
     }
 
@@ -66,14 +77,17 @@ public class EssentialsCore extends BotPlugin {
     public void onEnable() {
         this.panel = new EssentialsPanel();
 
+        /* Register commands */
         DragonBot.getInstance().getCommandManager().registerCommand(new Quote());
         DragonBot.getInstance().getCommandManager().registerCommand(new Discord());
         DragonBot.getInstance().getCommandManager().registerCommand(new Love());
         DragonBot.getInstance().getCommandManager().registerCommand(new Uptime());
         DragonBot.getInstance().getCommandManager().registerCommand(new FollowAge());
 
+        /* Register console commands */
         DragonBot.getInstance().getCommandManager().registerConsoleCommand(new ConsoleQuote());
 
+        /* Make and add button to the MainWindow of the Bot */
         JButton button = new JButton("Essentials");
         button.addActionListener(new EssentialsListener());
 
@@ -83,6 +97,7 @@ public class EssentialsCore extends BotPlugin {
 
     @Override
     public void onDisable() {
+        /* Save the configurations */
         this.quotesConfig.set("quotes", this.quotes);
         this.quotesConfig.save();
 

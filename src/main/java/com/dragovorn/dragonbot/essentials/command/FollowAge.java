@@ -14,6 +14,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+/**
+ * @author Dragovorn
+ * @since 1.01a
+ *
+ * A command that queries the Twitch API and figures out when the user followed the
+ * current channel, and then calculates the difference and applies a short
+ * algorithm to split the difference calculated into year/months/days/hours/seconds
+ */
 public class FollowAge extends Command {
 
     public FollowAge() {

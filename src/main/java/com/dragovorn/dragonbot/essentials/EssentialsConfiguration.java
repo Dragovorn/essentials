@@ -4,6 +4,12 @@ import com.dragovorn.dragonbot.api.bot.configuration.Configuration;
 
 import java.io.File;
 
+/**
+ * @author Dragovorn
+ * @since 1.00a
+ *
+ * Custom configuration class that contains getters for all of the essentials configuration values
+ */
 public class EssentialsConfiguration extends Configuration {
 
     EssentialsConfiguration(File file) {

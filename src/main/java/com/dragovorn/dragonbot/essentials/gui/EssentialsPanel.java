@@ -1,6 +1,6 @@
 package com.dragovorn.dragonbot.essentials.gui;
 
-import com.dragovorn.dragonbot.essentials.EssentialsCore;
+import com.dragovorn.dragonbot.essentials.Main;
 import com.dragovorn.dragonbot.essentials.listener.gui.AddQuoteListener;
 import com.dragovorn.dragonbot.essentials.listener.gui.BackListener;
 import com.dragovorn.dragonbot.gui.TextPrompt;
@@ -10,7 +10,7 @@ import java.awt.*;
 
 /**
  * @author Dragovorn
- * @since 1.00a
+ * @since 1.0.0
  *
  * This is the main GUI for Essentials, allows users to change the settings of the plugin
  */
@@ -51,7 +51,7 @@ public class EssentialsPanel extends JPanel {
 
         this.discord = new JTextField(9);
         this.discord.setMaximumSize(this.discord.getPreferredSize());
-        this.discord.setText(EssentialsCore.getInstance().getConfiguration().getDiscord());
+        this.discord.setText(Main.getInstance().getConfiguration().getDiscord());
         new TextPrompt("Discord Link", this.discord);
 
         JButton back = new JButton("Back");

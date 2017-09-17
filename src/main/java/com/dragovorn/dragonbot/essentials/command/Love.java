@@ -3,11 +3,10 @@ package com.dragovorn.dragonbot.essentials.command;
 import com.dragovorn.dragonbot.api.bot.command.Command;
 import com.dragovorn.dragonbot.bot.Bot;
 import com.dragovorn.dragonbot.bot.User;
-import com.sun.istack.internal.NotNull;
 
 /**
  * @author Dragovorn
- * @since 1.00a
+ * @since 1.0.0
  *
  * This command takes in an argument which would represent the name of
  * the other user/thing, we then apply a short 'love' algorithm that
@@ -21,7 +20,7 @@ public class Love extends Command {
     }
 
     @Override
-    public void execute(@NotNull User user, @NotNull String[] args) {
+    public void execute(User user, String[] args) {
         if (args.length == 1) {
             Bot.getInstance().sendMessage("%s -> Please put the name of the person/thing you want to love!", user.getName());
             return;

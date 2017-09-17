@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Dragovorn
- * @since 1.00a
+ * @since 1.0.0
  *
  * Used to switch from the Essentials GUI back to the Dragon Bot's GUI.
  */

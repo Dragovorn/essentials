@@ -6,7 +6,7 @@ import java.io.File;
 
 /**
  * @author Dragovorn
- * @since 1.00a
+ * @since 1.0.0
  *
  * Custom configuration class that contains getters for all of the essentials configuration values
  */

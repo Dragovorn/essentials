@@ -2,7 +2,7 @@ package com.dragovorn.dragonbot.essentials.utils;
 
 /**
  * @author Dragovorn
- * @since 1.01a
+ * @since 1.0.0
  *
  * Allows for easier time conversion using the built in convert methods.
  */

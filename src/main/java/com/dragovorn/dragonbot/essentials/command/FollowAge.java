@@ -1,10 +1,10 @@
 package com.dragovorn.dragonbot.essentials.command;
 
+import com.dragovorn.dragonbot.DragonBot;
 import com.dragovorn.dragonbot.api.bot.command.Command;
-import com.dragovorn.dragonbot.bot.DragonBot;
 import com.dragovorn.dragonbot.bot.User;
+import com.dragovorn.dragonbot.essentials.Main;
 import com.dragovorn.dragonbot.essentials.utils.TimeUnit;
-import com.sun.istack.internal.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,7 +16,7 @@ import java.util.TimeZone;
 
 /**
  * @author Dragovorn
- * @since 1.01a
+ * @since 1.0.1
  *
  * A command that queries the Twitch API and figures out when the user followed the
  * current channel, and then calculates the difference and applies a short
@@ -29,7 +29,7 @@ public class FollowAge extends Command {
     }
 
     @Override
-    public void execute(@NotNull User user, @NotNull String[] strings) {
+    public void execute(User user, String[] strings) {
         try {
             Date date = poll(user.getName(), "");
 
@@ -94,9 +94,9 @@ public class FollowAge extends Command {
         JSONObject object;
 
         if (cursor.equalsIgnoreCase("")) {
-            object = DragonBot.getInstance().getTwitchAPI().getFollowers(DragonBot.getInstance().getChannel());
+            object = Main.getInstance().getTwitchAPI().getFollowers(DragonBot.getInstance().getChannel());
         } else {
-            object = DragonBot.getInstance().getTwitchAPI().getFollowers(DragonBot.getInstance().getChannel(), cursor);
+            object = Main.getInstance().getTwitchAPI().getFollowers(DragonBot.getInstance().getChannel(), cursor);
         }
 
         JSONArray array = object.getJSONArray("follows");

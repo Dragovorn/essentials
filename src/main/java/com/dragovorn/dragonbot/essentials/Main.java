@@ -91,6 +91,7 @@ public class Main extends BotPlugin {
         DragonBot.getInstance().getCommandManager().registerCommand(new Love());
         DragonBot.getInstance().getCommandManager().registerCommand(new Uptime());
         DragonBot.getInstance().getCommandManager().registerCommand(new FollowAge());
+        DragonBot.getInstance().getCommandManager().registerCommand(new Points());
 
         /* Register console commands */
         DragonBot.getInstance().getCommandManager().registerConsoleCommand(new ConsoleQuote());

@@ -25,8 +25,6 @@ import java.util.List;
 @Plugin(name = "Essentials", author = "Dragovorn", version= "1.0.2")
 public class Main extends BotPlugin {
 
-    public static final String PREFIX = "[Essentials]: "; // Use this until plugin specific loggers are a thing
-
     private List<String> quotes;
 
     private Configuration quotesConfig;

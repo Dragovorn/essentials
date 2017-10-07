@@ -25,6 +25,6 @@ public class ConsoleQuote extends ConsoleCommand {
             return;
         }
 
-        Bot.getInstance().getLogger().info(Main.getInstance().getQuotes().get(ThreadLocalRandom.current().nextInt(0, Main.getInstance().getQuotes().size())));
+        Main.getInstance().getLogger().info(Main.getInstance().getQuotes().get(ThreadLocalRandom.current().nextInt(0, Main.getInstance().getQuotes().size())));
     }
 }

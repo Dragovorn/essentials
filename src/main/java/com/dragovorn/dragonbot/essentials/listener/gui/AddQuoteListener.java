@@ -1,6 +1,5 @@
 package com.dragovorn.dragonbot.essentials.listener.gui;
 
-import com.dragovorn.dragonbot.bot.Bot;
 import com.dragovorn.dragonbot.essentials.Main;
 
 import java.awt.event.ActionEvent;
@@ -19,7 +18,7 @@ public class AddQuoteListener implements ActionListener {
         if (Main.getInstance().getPanel().getQuote().getText().equals("") || !Main.getInstance().getQuotes().contains(Main.getInstance().getPanel().getQuote().getText())) {
             Main.getInstance().getQuotes().add(Main.getInstance().getPanel().getQuote().getText());
 
-            Bot.getInstance().getLogger().info(Main.PREFIX + "Added \'" + Main.getInstance().getPanel().getQuote().getText() + "\' to the quote list!");
+            Main.getInstance().getLogger().info("Added \'" + Main.getInstance().getPanel().getQuote().getText() + "\' to the quote list!");
 
             Main.getInstance().getPanel().getQuote().setText("");
         }

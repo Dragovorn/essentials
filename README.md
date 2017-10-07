@@ -6,7 +6,7 @@ Chat Commands
 -------------
 - !love - Simple love calculator, for the chat romances KappaPride  
 - !quote add \<quote\> - Adds a quote to the quotes list and assigns it a quote id (Mods only)  
-- !quote remove \<quote num\> - Removes a quote from the quotes list by id (Mods only)  
+- !quote remove \<quote num\> - Removes a quote from the quotes list by id (Mods only, **also quite buggy**)
 - !quote \<num\> - Sends the quote bound to that id  
 - !quote - Sends a random quote from the list  
 - !discord - Sends the streamer configured discord link

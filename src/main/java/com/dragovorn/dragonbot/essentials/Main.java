@@ -4,7 +4,6 @@ import com.dragovorn.dragonbot.DragonBot;
 import com.dragovorn.dragonbot.api.bot.configuration.Configuration;
 import com.dragovorn.dragonbot.api.bot.plugin.BotPlugin;
 import com.dragovorn.dragonbot.api.bot.plugin.Plugin;
-import com.dragovorn.dragonbot.api.twitch.TwitchAPI;
 import com.dragovorn.dragonbot.essentials.command.*;
 import com.dragovorn.dragonbot.essentials.command.console.ConsoleQuote;
 import com.dragovorn.dragonbot.essentials.gui.EssentialsPanel;
@@ -33,8 +32,6 @@ public class Main extends BotPlugin {
 
     private EssentialsPanel panel;
 
-    private TwitchAPI twitch;
-
     private static Main instance;
 
     public static Main getInstance() {
@@ -53,16 +50,9 @@ public class Main extends BotPlugin {
         return this.quotes;
     }
 
-    public TwitchAPI getTwitchAPI() {
-        return this.twitch;
-    }
-
     @Override
     public void onLoad() {
         instance = this;
-
-        /* Make a twitchAPI object using the API key twitch made public */
-        this.twitch = new TwitchAPI("uo6dggojyb8d6soh92zknwmi5ej1q2");
 
         /* Initialize our configuration right when our plugin loads */
         this.configuration = new EssentialsConfiguration(registerFile("config.yml"));
@@ -91,7 +81,7 @@ public class Main extends BotPlugin {
         DragonBot.getInstance().getCommandManager().registerCommand(new Love());
         DragonBot.getInstance().getCommandManager().registerCommand(new Uptime());
         DragonBot.getInstance().getCommandManager().registerCommand(new FollowAge());
-        DragonBot.getInstance().getCommandManager().registerCommand(new Points());
+//        DragonBot.getInstance().getCommandManager().registerCommand(new Points());
 
         /* Register console commands */
         DragonBot.getInstance().getCommandManager().registerConsoleCommand(new ConsoleQuote());

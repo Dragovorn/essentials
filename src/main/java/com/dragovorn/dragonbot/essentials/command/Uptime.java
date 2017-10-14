@@ -4,7 +4,6 @@ import com.dragovorn.dragonbot.DragonBot;
 import com.dragovorn.dragonbot.api.bot.command.Command;
 import com.dragovorn.dragonbot.bot.Bot;
 import com.dragovorn.dragonbot.bot.User;
-import com.dragovorn.dragonbot.essentials.Main;
 import com.dragovorn.dragonbot.essentials.utils.TimeUnit;
 import org.json.JSONObject;
 
@@ -32,7 +31,7 @@ public class Uptime extends Command {
             JSONObject stream;
 
             try {
-                stream = (JSONObject) Main.getInstance().getTwitchAPI().getStream(Bot.getInstance().getChannel()).get("stream");
+                stream = (JSONObject) DragonBot.getInstance().getTwitchAPI().getStream(Bot.getInstance().getChannel()).get("stream");
             } catch (ClassCastException exception) {
                 DragonBot.getInstance().sendMessage("%s isn\'t live!", Bot.getInstance().getChannel());
                 return;

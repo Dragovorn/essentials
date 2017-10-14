@@ -3,7 +3,6 @@ package com.dragovorn.dragonbot.essentials.command;
 import com.dragovorn.dragonbot.DragonBot;
 import com.dragovorn.dragonbot.api.bot.command.Command;
 import com.dragovorn.dragonbot.bot.User;
-import com.dragovorn.dragonbot.essentials.Main;
 import com.dragovorn.dragonbot.essentials.utils.TimeUnit;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -94,9 +93,9 @@ public class FollowAge extends Command {
         JSONObject object;
 
         if (cursor.equalsIgnoreCase("")) {
-            object = Main.getInstance().getTwitchAPI().getFollowers(DragonBot.getInstance().getChannel());
+            object = DragonBot.getInstance().getTwitchAPI().getFollowers(DragonBot.getInstance().getChannel());
         } else {
-            object = Main.getInstance().getTwitchAPI().getFollowers(DragonBot.getInstance().getChannel(), cursor);
+            object = DragonBot.getInstance().getTwitchAPI().getFollowers(DragonBot.getInstance().getChannel(), cursor);
         }
 
         JSONArray array = object.getJSONArray("follows");

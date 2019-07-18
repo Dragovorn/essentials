@@ -1,8 +1,14 @@
 package com.dragovorn.dragonbot.essentials.command;
 
-import com.dragovorn.dragonbot.api.bot.command.Command;
-import com.dragovorn.dragonbot.bot.Bot;
-import com.dragovorn.dragonbot.bot.User;
+import com.dragovorn.ircbot.api.command.Command;
+import com.dragovorn.ircbot.api.command.Executor;
+import com.dragovorn.ircbot.api.command.Parameter;
+import com.dragovorn.ircbot.api.command.ParameterType;
+import com.dragovorn.ircbot.api.command.argument.StringArgument;
+import com.dragovorn.ircbot.api.command.argument.annotation.Argument;
+import com.dragovorn.ircbot.api.irc.IChannel;
+import com.dragovorn.ircbot.api.irc.IConnection;
+import com.dragovorn.ircbot.api.user.IUser;
 
 /**
  * @author Dragovorn
@@ -13,40 +19,28 @@ import com.dragovorn.dragonbot.bot.User;
  * based on the characters of the name figures out the percent that the
  * two love each-other.
  */
-public class Love extends Command {
+@Command("love")
+@Argument(key = "target", clazz = StringArgument.class, overflow = true)
+public class Love {
 
-    public Love() {
-        super("love", -1, false);
-    }
+    @Executor
+    public void execute(@Parameter(ParameterType.USER) IUser user,
+                        @Parameter(ParameterType.CHANNEL) IChannel channel,
+                        @Parameter(value = ParameterType.ARGUMENT, name = "target") String target) {
 
-    @Override
-    public void execute(User user, String[] args) {
-        if (args.length == 1) {
-            Bot.getInstance().sendMessage("%s -> Please put the name of the person/thing you want to love!", user.getName());
-            return;
-        }
-
-        StringBuilder builder = new StringBuilder();
-
-        for (String str : args) {
-            builder.append(str).append(" ");
-        }
-
-        String name = builder.toString().trim();
-
-        String entered = name;
+        String entered = target;
 
         /* Remove duplicate letters */
-        for (int x = 0; x < user.getName().length(); x++) {
-            for (int y = 0; y < name.length(); y++) {
-                if (user.getName().charAt(x) == name.charAt(y)) {
-                    name = name.replaceAll(String.valueOf(name.charAt(y)), "");
+        for (int x = 0; x < user.getUsername().length(); x++) {
+            for (int y = 0; y < target.length(); y++) {
+                if (user.getUsername().charAt(x) == target.charAt(y)) {
+                    target = target.replaceAll(String.valueOf(target.charAt(y)), "");
                 }
             }
         }
 
         /* Add the second name to the first make them both upper case so capitalization doesn't matter */
-        String names = user.getName().toUpperCase() + name.toUpperCase();
+        String names = user.getUsername().toUpperCase() + target.toUpperCase();
 
         int sum = 0;
 
@@ -55,6 +49,6 @@ public class Love extends Command {
             sum += names.charAt(x);
         }
 
-        Bot.getInstance().sendMessage("%s\'s love to %s is %s%%!", user.getName(), entered, sum % 101);
+        channel.sendMessage(user.getUsername() + "'s love to " + entered + " is " + (sum % 101) + "%!");
     }
 }

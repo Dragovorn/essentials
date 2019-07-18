@@ -7,7 +7,6 @@ import com.dragovorn.ircbot.api.command.ParameterType;
 import com.dragovorn.ircbot.api.command.argument.StringArgument;
 import com.dragovorn.ircbot.api.command.argument.annotation.Argument;
 import com.dragovorn.ircbot.api.irc.IChannel;
-import com.dragovorn.ircbot.api.irc.IConnection;
 import com.dragovorn.ircbot.api.user.IUser;
 
 /**
